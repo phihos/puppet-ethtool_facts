@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 **Features**
 
+* support ethtool flags `-g/--show-ring`, `-l/--show-channels`, `-c/--show-coalesce` and `-k/--show-features`
+
 **Bugfixes**
 
 **Known Issues**

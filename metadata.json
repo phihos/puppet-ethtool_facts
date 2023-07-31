@@ -2,9 +2,11 @@
   "name": "phihos-ethtool_facts",
   "version": "0.1.0",
   "author": "Philipp Hossner",
-  "summary": "",
+  "summary": "Custom fact containing ethtool output for every interface.",
   "license": "MIT",
-  "source": "",
+  "source": "https://github.com/phihos/puppet-ethtool_facts",
+  "project_page": "https://github.com/phihos/puppet-ethtool_facts",
+  "issues_url": "https://github.com/phihos/puppet-ethtool_facts",
   "dependencies": [
 
   ],
