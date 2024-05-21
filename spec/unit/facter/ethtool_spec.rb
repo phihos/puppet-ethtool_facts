@@ -150,6 +150,8 @@ describe :ethtool, type: :fact do
     # perform any action that should be run before every test
     Facter.clear
     require 'facter/ethtool'
+    allow(Facter::Core::Execution).to receive(:which).and_call_original
+    allow(Facter::Core::Execution).to receive(:which).with('ethtool').and_return('/usr/bin/ethtool')
     allow(Facter.fact(:networking)).to receive(:value).and_return(
       {
         'interfaces' => {
@@ -169,34 +171,34 @@ describe :ethtool, type: :fact do
                             {
                               'eno1' => {
                                 'ring' => {
-                                  'Current hardware settings' => {
-                                    'CQE Size' => 'n/a',
+                                  'Current_hardware_settings' => {
+                                    'CQE_Size' => 'n/a',
                                     'RX' => '256',
-                                    'RX Buf Len' => 'n/a',
-                                    'RX Jumbo' => 'n/a',
-                                    'RX Mini' => 'n/a',
-                                    'RX Push' => 'n/a',
-                                    'TCP data split' => 'n/a',
+                                    'RX_Buf_Len' => 'n/a',
+                                    'RX_Jumbo' => 'n/a',
+                                    'RX_Mini' => 'n/a',
+                                    'RX_Push' => 'n/a',
+                                    'TCP_data_split' => 'n/a',
                                     'TX' => '256',
-                                    'TX Push' => 'off',
-                                    'TX push buff len' => 'n/a'
+                                    'TX_Push' => 'off',
+                                    'TX_push_buff_len' => 'n/a'
                                   },
-                                  'Pre-set maximums' => {
+                                  'Pre-set_maximums' => {
                                     'RX' => '4096',
-                                    'RX Jumbo' => 'n/a',
-                                    'RX Mini' => 'n/a',
+                                    'RX_Jumbo' => 'n/a',
+                                    'RX_Mini' => 'n/a',
                                     'TX' => '4096',
-                                    'TX push buff len' => 'n/a'
+                                    'TX_push_buff_len' => 'n/a'
                                   }
                                 },
                                 'channels' => {
-                                  'Current hardware settings' => {
+                                  'Current_hardware_settings' => {
                                     'Combined' => '8',
                                     'Other' => '1',
                                     'RX' => 'n/a',
                                     'TX' => 'n/a'
                                   },
-                                  'Pre-set maximums' => {
+                                  'Pre-set_maximums' => {
                                     'Combined' => '63',
                                     'Other' => '1',
                                     'RX' => 'n/a',
