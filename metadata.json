@@ -1,6 +1,6 @@
 {
   "name": "phihos-ethtool_facts",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Philipp Hossner",
   "summary": "Custom fact containing ethtool output for every interface.",
   "license": "MIT",

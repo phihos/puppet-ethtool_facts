@@ -37,6 +37,18 @@ Just install this module and `puppet facts | jq '.values.ethtool'` should show s
 ```json
 {
   "eno1": {
+    "driver": {
+      "driver": "ixgbe",
+      "version": "6.5.0-35-generic",
+      "firmware-version": "0x80001733, 1.3105.0",
+      "expansion-rom-version": "",
+      "bus-info": "0000:61:00.0",
+      "supports-statistics": "yes",
+      "supports-test": "yes",
+      "supports-eeprom-access": "yes",
+      "supports-register-dump": "yes",
+      "supports-priv-flags": "yes"
+    },
     "ring": {
       "Pre-set_maximums": {
         "RX": "4096",

@@ -7,6 +7,19 @@ require 'facter/ethtool'
 describe :ethtool, type: :fact do
   subject(:fact) { Facter.fact(:ethtool) }
 
+  ethtool_i = <<~EOT
+    driver: ixgbe
+    version: 6.5.0-35-generic
+    firmware-version: 0x80001733, 1.3105.0
+    expansion-rom-version:#{' '}
+    bus-info: 0000:61:00.0
+    supports-statistics: yes
+    supports-test: yes
+    supports-eeprom-access: yes
+    supports-register-dump: yes
+    supports-priv-flags: yes
+  EOT
+
   ethtool_k = <<~EOT
     Features for eno1:
     rx-checksumming: on [fixed]
@@ -160,6 +173,7 @@ describe :ethtool, type: :fact do
       },
     )
     allow(Facter::Core::Execution).to receive(:execute).and_call_original
+    allow(Facter::Core::Execution).to receive(:execute).with('ethtool -i eno1').and_return(ethtool_i)
     allow(Facter::Core::Execution).to receive(:execute).with('ethtool -k eno1').and_return(ethtool_k)
     allow(Facter::Core::Execution).to receive(:execute).with('ethtool -l eno1').and_return(ethtool_l)
     allow(Facter::Core::Execution).to receive(:execute).with('ethtool -c eno1').and_return(ethtool_c)
@@ -170,6 +184,18 @@ describe :ethtool, type: :fact do
     expect(fact.value).to eq(
                             {
                               'eno1' => {
+                                'driver' => {
+                                  'driver' => 'ixgbe',
+                                  'version' => '6.5.0-35-generic',
+                                  'firmware-version' => '0x80001733, 1.3105.0',
+                                  'expansion-rom-version' => '',
+                                  'bus-info' => '0000:61:00.0',
+                                  'supports-statistics' => 'yes',
+                                  'supports-test' => 'yes',
+                                  'supports-eeprom-access' => 'yes',
+                                  'supports-register-dump' => 'yes',
+                                  'supports-priv-flags' => 'yes',
+                                },
                                 'ring' => {
                                   'Current_hardware_settings' => {
                                     'CQE_Size' => 'n/a',
