@@ -11,7 +11,7 @@ describe :ethtool, type: :fact do
     driver: ixgbe
     version: 6.5.0-35-generic
     firmware-version: 0x80001733, 1.3105.0
-    expansion-rom-version: 
+    expansion-rom-version:#{' '}
     bus-info: 0000:61:00.0
     supports-statistics: yes
     supports-test: yes

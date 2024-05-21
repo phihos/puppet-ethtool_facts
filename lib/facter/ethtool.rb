@@ -30,7 +30,7 @@ Facter.add(:ethtool) do
           current_subsection = result[subsection_title]
         end
       else # case 3: normal key-value pair
-        parts = line.split(/:\s+/)
+        parts = line.split(%r{:\s+})
         if parts.length == 2
           current_subsection[parts[0].strip.tr(' ', '_')] = parts[1].strip
         end
@@ -51,7 +51,7 @@ Facter.add(:ethtool) do
       coalesce_results = ethtool("-c #{interface}")
       feature_results = ethtool("-k #{interface}")
 
-      result[interface]['driver'] = ethtool_result_to_h(driver_results, has_no_headlines = true)
+      result[interface]['driver'] = ethtool_result_to_h(driver_results, true)
       result[interface]['ring'] = ethtool_result_to_h(ring_buffer_results)
       result[interface]['channels'] = ethtool_result_to_h(channel_results)
       result[interface]['coalesce'] = ethtool_result_to_h(coalesce_results)
