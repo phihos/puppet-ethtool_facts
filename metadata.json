@@ -1,6 +1,6 @@
 {
   "name": "phihos-ethtool_facts",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Philipp Hossner",
   "summary": "Custom fact containing ethtool output for every interface.",
   "license": "MIT",
@@ -66,7 +66,7 @@
       "version_requirement": ">= 7.24 < 9.0.0"
     }
   ],
-  "pdk-version": "3.0.0",
-  "template-url": "pdk-default#3.0.0",
-  "template-ref": "tags/3.0.0-0-g056e50d"
+  "pdk-version": "3.0.1",
+  "template-url": "https://github.com/puppetlabs/pdk-templates#3.0.0",
+  "template-ref": "tags/3.0.0-0-g5bfc1c0"
 }

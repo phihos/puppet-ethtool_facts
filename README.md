@@ -38,27 +38,27 @@ Just install this module and `puppet facts | jq '.values.ethtool'` should show s
 {
   "eno1": {
     "ring": {
-      "Pre-set maximums": {
+      "Pre-set_maximums": {
         "RX": "4096",
-        "RX Mini": "n/a",
-        "RX Jumbo": "n/a",
+        "RX_Mini": "n/a",
+        "RX_Jumbo": "n/a",
         "TX": "4096"
       },
-      "Current hardware settings": {
+      "Current_hardware_settings": {
         "RX": "4096",
-        "RX Mini": "n/a",
-        "RX Jumbo": "n/a",
+        "RX_Mini": "n/a",
+        "RX_Jumbo": "n/a",
         "TX": "4096"
       }
     },
     "channels": {
-      "Pre-set maximums": {
+      "Pre-set_maximums": {
         "RX": "n/a",
         "TX": "n/a",
         "Other": "1",
         "Combined": "63"
       },
-      "Current hardware settings": {
+      "Current_hardware_settings": {
         "RX": "n/a",
         "TX": "n/a",
         "Other": "1",
