@@ -22,13 +22,13 @@ Facter.add(:ethtool) do
       line = line.strip
       if line.end_with?(':')
         subsection_title = line.chop
-        subsection_title = subsection_title.gsub(/ /, '_')
+        subsection_title = subsection_title.tr(' ', '_')
         result[subsection_title] = {}
         current_subsection = result[subsection_title]
       else
         parts = line.split(':')
         if parts.length == 2
-          current_subsection[parts[0].strip.gsub(/ /, '_')] = parts[1].strip
+          current_subsection[parts[0].strip.tr(' ', '_')] = parts[1].strip
         end
       end
     end
