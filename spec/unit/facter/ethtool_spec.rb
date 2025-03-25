@@ -159,6 +159,26 @@ describe :ethtool, type: :fact do
     Combined:	8
   EOT
 
+  ethtool_t = <<~EOT
+    Time stamping parameters for eno1:
+    Capabilities:
+            hardware-transmit
+            software-transmit
+            hardware-receive
+            software-receive
+            software-system-clock
+            hardware-raw-clock
+    PTP Hardware Clock: 0
+    Hardware Transmit Timestamp Modes:
+            off
+            on
+    Hardware Receive Filter Modes:
+            none
+            ptpv1-l4-event
+            ptpv2-l4-event
+            ptpv2-l2-event
+  EOT
+
   before :each do
     # perform any action that should be run before every test
     Facter.clear
@@ -178,6 +198,7 @@ describe :ethtool, type: :fact do
     allow(Facter::Core::Execution).to receive(:execute).with('ethtool -l eno1').and_return(ethtool_l)
     allow(Facter::Core::Execution).to receive(:execute).with('ethtool -c eno1').and_return(ethtool_c)
     allow(Facter::Core::Execution).to receive(:execute).with('ethtool -g eno1').and_return(ethtool_g)
+    allow(Facter::Core::Execution).to receive(:execute).with('ethtool -T eno1').and_return(ethtool_t)
   end
 
   it 'returns a value' do
@@ -321,6 +342,27 @@ describe :ethtool, type: :fact do
                                   'tx-vlan-offload' => 'off [fixed]',
                                   'tx-vlan-stag-hw-insert' => 'off [fixed]',
                                   'vlan-challenged' => 'off [fixed]'
+                                },
+                                'time_stamping' =>  {
+                                  'Capabilities' =>  {
+                                    'hardware-raw-clock' =>  true,
+                                    'hardware-receive' =>  true,
+                                    'hardware-transmit' =>  true,
+                                    'software-receive' =>  true,
+                                    'software-system-clock' =>  true,
+                                    'software-transmit' =>  true
+                                  },
+                                  'Hardware_Receive_Filter_Modes' =>  {
+                                    'none' =>  true,
+                                    'ptpv1-l4-event' =>  true,
+                                    'ptpv2-l2-event' =>  true,
+                                    'ptpv2-l4-event' =>  true
+                                  },
+                                  'Hardware_Transmit_Timestamp_Modes' =>  {
+                                    'off' =>  true,
+                                    'on' =>  true
+                                  },
+                                  'PTP_Hardware_Clock' =>  '0'
                                 }
                               },
                             },
