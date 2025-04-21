@@ -9,6 +9,8 @@ Custom fact containing ethtool output for every interface.
     * [Setup requirements](#setup-requirements)
     * [Beginning with ethtool_facts](#beginning-with-ethtool_facts)
 1. [Usage](#usage)
+1. [Configuration](#configuration)
+    * [Physical Interface Filtering](#physical-interface-filtering)
 
 ## Description
 
@@ -16,6 +18,7 @@ When attempting to automate NIC tuning via Puppet the built-in facts are a good 
 A good example is channel tuning: If you want to set the NIC channels to the maximum value you need to know what the maximum value is.
 On CLI you can detect that via `ethtool -l <interface>`. 
 This module takes on the task of reading the output of this and several other ethtool flags to make that information available at catalog compile time.
+This module provides ethtool information for all network interfaces by default, with an option to filter for physical interfaces only.
 
 ## Setup
 
@@ -165,7 +168,39 @@ Just install this module and `puppet facts | jq '.values.ethtool'` should show s
       "hsr-tag-rm-offload": "off [fixed]",
       "hsr-fwd-offload": "off [fixed]",
       "hsr-dup-offload": "off [fixed]"
+    },
+    "time_stamping": {
+      "Capabilities": {
+        "hardware-raw-clock": true,
+        "hardware-receive": true,
+        "hardware-transmit": true,
+        "software-receive": true,
+        "software-system-clock": true,
+        "software-transmit": true
+      },
+      "Hardware_Receive_Filter_Modes": {
+        "none": true,
+        "ptpv1-l4-event": true,
+        "ptpv2-l2-event": true,
+        "ptpv2-l4-event": true
+      },
+      "Hardware_Transmit_Timestamp_Modes": {
+        "off": true,
+        "on": true
+      },
+      "PTP_Hardware_Clock": "0"
     }
   }
 }
 ```
+## Configuration
+
+### Physical Interface Filtering
+
+Set the `ethtool_physical_only` fact to `true` to limit ethtool output to only physical network interfaces:
+
+```bash
+export FACTER_ethtool_physical_only=true
+```
+
+This is useful when you want to exclude virtual interfaces like bridges or bonds from the ethtool output.
