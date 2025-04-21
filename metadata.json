@@ -1,6 +1,6 @@
 {
   "name": "phihos-ethtool_facts",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "Philipp Hossner",
   "summary": "Custom fact containing ethtool output for every interface.",
   "license": "MIT",
@@ -44,7 +44,10 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "18.04"
+        "18.04",
+        "20.04",
+        "22.04",
+        "24.04"
       ]
     },
     {
