@@ -29,9 +29,7 @@ You need to ensure that the binary is present on you system.
 
 ### Beginning with ethtool_facts
 
-The very basic steps needed for a user to get the module up and running. This
-can include setup steps, if necessary, or it can be an example of the most basic
-use of the module.
+Install the module and it will automatically make ethtool facts available via Facter. No additional setup is needed.
 
 ## Usage
 
