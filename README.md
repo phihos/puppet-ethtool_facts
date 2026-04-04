@@ -16,7 +16,7 @@ Custom fact containing ethtool output for every interface.
 
 When attempting to automate NIC tuning via Puppet the built-in facts are a good start but not sufficient.
 A good example is channel tuning: If you want to set the NIC channels to the maximum value you need to know what the maximum value is.
-On CLI you can detect that via `ethtool -l <interface>`. 
+On CLI you can detect that via `ethtool -l <interface>`.
 This module takes on the task of reading the output of this and several other ethtool flags to make that information available at catalog compile time.
 This module provides ethtool information for all network interfaces by default, with an option to filter for physical interfaces only.
 
@@ -24,8 +24,8 @@ This module provides ethtool information for all network interfaces by default, 
 
 ### Setup Requirements
 
-`ethtool` must be installed. If not, then the fact will be empty. 
-You need to ensure that the binary is present on you system.
+`ethtool` must be installed. If not, then the fact will be empty.
+You need to ensure that the binary is present on your system.
 
 ### Beginning with ethtool_facts
 
