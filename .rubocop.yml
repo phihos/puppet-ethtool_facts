@@ -2,6 +2,8 @@
 require:
 - rubocop-performance
 - rubocop-rspec
+plugins:
+- rubocop-capybara
 AllCops:
   DisplayCopNames: true
   TargetRubyVersion: '2.6'
