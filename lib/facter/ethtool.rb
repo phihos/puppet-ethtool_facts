@@ -60,7 +60,7 @@ Facter.add(:ethtool) do
     interfaces = physical_only ? interfaces.select { |_, attrs| attrs['physical'] == true } : interfaces
 
     result = {}
-    interfaces.each do |interface, _|
+    interfaces.each_key do |interface|
       result[interface] = {}
 
       driver_results = ethtool("-i #{interface}")
