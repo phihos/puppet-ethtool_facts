@@ -5,6 +5,7 @@ require:
 AllCops:
   DisplayCopNames: true
   TargetRubyVersion: '2.6'
+  NewCops: disable
   Include:
   - "**/*.rb"
   Exclude:
